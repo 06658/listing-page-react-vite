@@ -1,0 +1,20 @@
+.snap-slider {
+    display: grid;
+    grid-template-columns: repeat(var(--repeat-count), 100%);
+    gap: 1rem;
+    scroll-snap-type: x mandatory;
+    overflow: auto;
+}
+
+.snap-slider::-webkit-scrollbar {
+    display: none;
+}
+
+.snap-slider article {
+    scroll-snap-align: start;
+    width: 100%;
+}
+
+.snap-slider article img {
+    width: 100%;
+}
