@@ -1,6 +1,5 @@
 // import { useState, useEffect } from "react";
 import type { ProductEntity } from "../../../types";
-import { useId } from "react";
 import { useQuery } from "@tanstack/react-query";
 import ProductEntityComponent from "../../molecules/productEntity";
 
@@ -18,8 +17,6 @@ const HEADERS = {
 const PAGINATION_SIZE = 100;
 
 export default function ListingPage() {
-
-    const id = useId();
     // const [page, setPage] = useState(0)
 
     const fetchProducts = (page = 0) => fetch(`https://discovery-bff.qa.licious.app/api/v1/filter?include=layout&size=${PAGINATION_SIZE}&groupEnabled=false&cat_id=3&page=${page}&dataSource=D2`, {method: "POST", body: JSON.stringify({}), headers: HEADERS}).then((response) => response.json());
@@ -51,9 +48,9 @@ export default function ListingPage() {
     return (
         <section className="product-list">
             {
-                listingAPIData?.data?.products?.data?.map((item: ProductEntity) => {
+                listingAPIData?.data?.products?.data?.map((item: ProductEntity, index: number) => {
                     return (
-                        <ProductEntityComponent key={`${id}_${item.type}`} products={item.products} type={item.type} />
+                        <ProductEntityComponent key={`${index}_${item.type}`} products={item.products} type={item.type} />
                     );
                 })
             }
