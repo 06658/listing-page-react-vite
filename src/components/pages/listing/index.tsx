@@ -22,7 +22,7 @@ export default function ListingPage() {
     const id = useId();
     // const [page, setPage] = useState(0)
 
-    const fetchProducts = (page = 0) => fetch(`https://discovery-bff.qa.licious.app/api/v1/filter?include=layout&size=${PAGINATION_SIZE}&groupEnabled=true&cat_id=3&page=${page}&dataSource=D2`, {method: "POST", body: JSON.stringify({}), headers: HEADERS}).then((response) => response.json());
+    const fetchProducts = (page = 0) => fetch(`https://discovery-bff.qa.licious.app/api/v1/filter?include=layout&size=${PAGINATION_SIZE}&groupEnabled=false&cat_id=3&page=${page}&dataSource=D2`, {method: "POST", body: JSON.stringify({}), headers: HEADERS}).then((response) => response.json());
 
     const { data: listingAPIData } = useQuery({
         queryKey: ["listingdata"],
